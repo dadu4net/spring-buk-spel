@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title id="page-title">Barbie Run - Malibu Endless Runner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Pacifico&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="theme-barbie">
+  <div id="game-container">
+    <!-- Header / Brand -->
+    <header class="game-header">
+      <h1 id="main-logo" class="logo-title">💖 Barbie Run 💖</h1>
+      <div class="header-controls">
+        <button id="theme-btn" class="theme-switch-btn" title="Wissel tussen Barbie en Leeuwenkoning">🦁 Leeuwenkoning</button>
+        <button id="sound-btn" class="icon-btn" title="Geluid aan/uit" aria-label="Geluid aan/uit">🔊</button>
+        <button id="pause-btn" class="icon-btn" title="Pauzeren" aria-label="Pauzeren">⏸️</button>
+      </div>
+    </header>
+
+    <!-- Game Viewport -->
+    <div class="canvas-wrapper">
+      <canvas id="gameCanvas" width="960" height="480"></canvas>
+
+      <!-- In-Game HUD Overlay -->
+      <div id="hud" class="hud-overlay">
+        <div class="hud-item score-box">
+          <span class="hud-label">AFSTAND</span>
+          <span id="score-val" class="hud-value">0 m</span>
+        </div>
+        <div class="hud-item hearts-box">
+          <span id="collectible-label" class="hud-label">HARTJES</span>
+          <span id="hearts-val" class="hud-value">💖 0</span>
+        </div>
+        <div class="hud-item highscore-box">
+          <span class="hud-label">RECORD</span>
+          <span id="highscore-val" class="hud-value">0 m</span>
+        </div>
+        <div id="powerup-indicator" class="powerup-badge hidden">
+          ✨ SPARKLE SHIELD: <span id="powerup-timer">5s</span>
+        </div>
+      </div>
+
+      <!-- Start Screen Modal -->
+      <div id="start-screen" class="screen-modal">
+        <div class="modal-card">
+          <h2 id="start-title" class="sparkle-title">Malibu Adventure!</h2>
+          <p id="start-tagline" class="tagline">Rol door Malibu, beuk make-up tassen open (+100m!) en verzamel magische hartjes & glitter sterren!</p>
+          
+          <!-- Character Selector (Dynamically populated based on active theme) -->
+          <div class="character-select-container">
+            <span class="select-label">Kies je personage:</span>
+            <div id="char-picker-start" class="character-picker">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+
+          <div class="controls-guide">
+            <div class="guide-item">
+              <span class="key-badge">Spatie</span> of <span class="key-badge">⬆️ Pijl Omhoog</span>
+              <p id="guide-jump-text">Springen</p>
+            </div>
+            <div class="guide-item">
+              <span class="key-badge">⬇️ Pijl Omlaag</span>
+              <p id="guide-slide-text">Bukken / Sliden</p>
+            </div>
+          </div>
+
+          <button id="start-btn" class="pink-btn pulse">✨ START RUN ✨</button>
+        </div>
+      </div>
+
+      <!-- Pause Screen Modal -->
+      <div id="pause-screen" class="screen-modal hidden">
+        <div class="modal-card">
+          <h2 id="pause-title">Even Pauzeren... 🏖️</h2>
+          <p id="pause-message">Barbie neemt even een slokje van haar smoothie!</p>
+          <button id="resume-btn" class="pink-btn">Verder Spelen ▶️</button>
+        </div>
+      </div>
+
+      <!-- Game Over Modal -->
+      <div id="gameover-screen" class="screen-modal hidden">
+        <div class="modal-card">
+          <h2 id="gameover-title" class="gameover-title">Oeps! Uit de bocht! 💅</h2>
+          <div class="results-box">
+            <div class="result-row">
+              <span>Afgelegde Afstand:</span>
+              <strong id="final-score">0 m</strong>
+            </div>
+            <div class="result-row">
+              <span id="final-collectible-label">Verzamelde Hartjes:</span>
+              <strong id="final-hearts">0</strong>
+            </div>
+            <div class="result-row highlight-row">
+              <span>Beste Record:</span>
+              <strong id="final-highscore">0 m</strong>
+            </div>
+          </div>
+          <div class="character-select-container">
+            <span class="select-label">Speel als:</span>
+            <div id="char-picker-gameover" class="character-picker">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+          <button id="restart-btn" class="pink-btn pulse">🔄 OPNIEUW PROBEREN</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- On-screen mobile touch controls -->
+    <div id="touch-controls" class="touch-controls">
+      <button id="touch-slide" class="touch-btn slide-btn">
+        <span>⬇️</span>
+        <label id="touch-slide-label">BUKKEN</label>
+      </button>
+      <button id="touch-jump" class="touch-btn jump-btn">
+        <span>⬆️</span>
+        <label id="touch-jump-label">SPRINGEN</label>
+      </button>
+    </div>
+
+    <!-- Footer Info -->
+    <footer class="game-footer">
+      <p id="footer-text">Wissel altijd tussen 🎀 Barbie en 🦁 De Leeuwenkoning • Werkt offline & online</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/background.js"></script>
+  <script src="js/collectibles.js"></script>
+  <script src="js/obstacles.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/controls.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
