@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milde Nachoschotel met Kidneybonen</title>
+
+  <style>
+    :root {
+      --cream: #fffaf2;
+      --white: #ffffff;
+      --text: #263238;
+      --muted: #6f7a7d;
+      --green: #6fae72;
+      --green-dark: #477b4d;
+      --yellow: #f6c85f;
+      --orange: #ef895f;
+      --pink: #ed9a9a;
+      --blue: #8ec5d6;
+      --shadow: 0 12px 40px rgba(47, 58, 50, 0.08);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 460px;
+      display: flex;
+      align-items: flex-end;
+      padding: 48px;
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(246, 200, 95, .45), transparent 25%),
+        radial-gradient(circle at 10% 90%, rgba(111, 174, 114, .28), transparent 30%),
+        linear-gradient(135deg, #fffdf7 0%, #f4f8ed 100%);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: .5;
+      filter: blur(2px);
+    }
+
+    .hero::before {
+      width: 180px;
+      height: 180px;
+      background: #f5b7a2;
+      right: -40px;
+      top: -50px;
+    }
+
+    .hero::after {
+      width: 130px;
+      height: 130px;
+      background: #9bd4a0;
+      left: -30px;
+      top: 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .75);
+      backdrop-filter: blur(12px);
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: .98;
+      letter-spacing: -0.055em;
+      margin: 0 0 22px;
+      font-weight: 750;
+    }
+
+    .intro {
+      max-width: 650px;
+      font-size: 20px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* INFO */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .info-card {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-icon {
+      font-size: 25px;
+      margin-bottom: 7px;
+    }
+
+    .info-label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .info-value {
+      font-size: 17px;
+      font-weight: 650;
+    }
+
+    /* MAIN GRID */
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 28px;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin: 0 0 22px;
+    }
+
+    h3 {
+      margin: 28px 0 12px;
+      font-size: 18px;
+    }
+
+    /* INGREDIENTS */
+
+    .ingredient-group {
+      margin-bottom: 25px;
+    }
+
+    .ingredient-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .ingredient-group-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--green-dark);
+      margin-bottom: 10px;
+    }
+
+    .ingredients {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ingredients li {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eef0eb;
+      font-size: 15px;
+    }
+
+    .ingredients li:last-child {
+      border-bottom: none;
+    }
+
+    .amount {
+      color: var(--muted);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* STEPS */
+
+    .step {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 16px;
+      margin-bottom: 25px;
+    }
+
+    .step-number {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #edf6e9;
+      color: var(--green-dark);
+      font-weight: 750;
+      font-size: 17px;
+    }
+
+    .step h3 {
+      margin: 2px 0 5px;
+    }
+
+    .step p {
+      margin: 0;
+      color: #5e686b;
+    }
+
+    /* SPECIAL BOX */
+
+    .little-one {
+      background:
+        linear-gradient(135deg, #fff8dc, #fffdf3);
+      border: 1px solid #f6e5a9;
+      border-radius: 24px;
+      padding: 23px;
+      margin: 28px 0;
+    }
+
+    .little-one-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #8a6b19;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .little-one p {
+      margin: 0;
+      color: #665c3e;
+    }
+
+    /* TIP */
+
+    .tip {
+      background: #eef7f0;
+      border-radius: 22px;
+      padding: 22px;
+      color: #49614c;
+    }
+
+    .tip strong {
+      color: var(--green-dark);
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 12px 0 35px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 800px) {
+      .page {
+        padding: 14px;
+      }
+
+      .hero {
+        min-height: 430px;
+        padding: 30px 26px;
+        border-radius: 28px;
+      }
+
+      .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        min-height: 440px;
+      }
+
+      .intro {
+        font-size: 17px;
+      }
+
+      .info-grid {
+        gap: 10px;
+      }
+
+      .info-card {
+        padding: 15px;
+      }
+
+      h2 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          🌼 Mild & familievriendelijk
+        </div>
+
+        <h1>
+          Nachoschotel<br>
+          met kidneybonen
+        </h1>
+
+        <p class="intro">
+          Eén lekker groente-bonenprutje voor het hele gezin.
+          Serveer het voor de kleine met rijst en maak er voor de rest
+          een heerlijke, cheesy nachoschotel van.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- INFO -->
+    <section class="info-grid">
+
+      <div class="info-card">
+        <div class="info-icon">👨‍👩‍👧</div>
+        <div class="info-label">Voor</div>
+        <div class="info-value">± 4 personen</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">⏱️</div>
+        <div class="info-label">Bereiding</div>
+        <div class="info-value">± 30 min</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🌶️</div>
+        <div class="info-label">Smaak</div>
+        <div class="info-value">Mild & kruidig</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🥕</div>
+        <div class="info-label">Familie</div>
+        <div class="info-value">Kindvriendelijk</div>
+      </div>
+
+    </section>
+
+    <!-- CONTENT -->
+    <div class="content-grid">
+
+      <!-- INGREDIENTS -->
+      <aside>
+
+        <div class="card">
+
+          <h2>Ingrediënten</h2>
+
+          <div class="ingredient-group">
+
+            <div class="ingredient-group-title">
+              Voor het prutje
+            </div>
+
+            <ul class="ingredients">
+              <li>
+                <span>Ui</span>
+                <span class="amount">1</span>
+              </li>
+
+              <li>
+                <span>Rode paprika</span>
+                <span class="amount">1</span>
+              </li>
+
+              <li>
+                <span>Kidneybonen</span>
+                <span class="amount">1 blik</span>
+              </li>
+
+              <li>
+                <span>Mais</span>
+                <span class="amount">1 klein blik</span>
+              </li>
+
+              <li>
+                <span>Tomatenblokjes</span>
+                <span class="amount">400 g</span>
+              </li>
+
+              <li>
+                <span>Tomatenpuree</span>
+                <span class="amount">1 el</span>
+              </li>
+
+              <li>
+                <span>Komijn</span>
+                <span class="amount">1 tl</span>
+              </li>
+
+              <li>
+                <span>Paprikapoeder</span>
+                <span class="amount">1 tl</span>
+              </li>
+
+              <li>
+                <span>Oregano</span>
+                <span class="amount">½ tl</span>
+              </li>
+
+              <li>
+                <span>Water</span>
+                <span class="amount">100–150 ml</span>
+              </li>
+            </ul>
+
+          </div>
+
+          <div class="ingredient-group">
+
+            <div class="ingredient-group-title">
+              Voor de nachos
+            </div>
+
+            <ul class="ingredients">
+              <li>
+                <span>Tortillachips</span>
+                <span class="amount">± 200 g</span>
+              </li>
+
+              <li>
+                <span>Geraspte kaas</span>
+                <span class="amount">± 150 g</span>
+              </li>
+
+              <li>
+                <span>Crème fraîche</span>
+                <span class="amount">naar wens</span>
+              </li>
+
+              <li>
+                <span>Avocado</span>
+                <span class="amount">optioneel</span>
+              </li>
+            </ul>
+
+          </div>
+
+          <div class="ingredient-group">
+
+            <div class="ingredient-group-title">
+              Voor de kleine
+            </div>
+
+            <ul class="ingredients">
+              <li>
+                <span>Rijst</span>
+                <span class="amount">naar wens</span>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+        <div class="tip">
+          <strong>🌱 Slim voor het gezin</strong><br>
+          Maak eerst één milde basis. Schep daarna een portie voor de
+          kleine apart en maak de rest eventueel wat pittiger voor de
+          volwassenen.
+        </div>
+
+      </aside>
+
+      <!-- RECIPE -->
+      <section>
+
+        <div class="card">
+
+          <h2>Zo maak je het</h2>
+
+          <div class="step">
+            <div class="step-number">1</div>
+
+            <div>
+              <h3>Snijd de groenten</h3>
+              <p>
+                Snijd de ui fijn en de paprika in kleine blokjes.
+                Laat de kidneybonen en mais goed uitlekken en spoel
+                de bonen even af.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+
+            <div>
+              <h3>Maak het prutje</h3>
+              <p>
+                Verhit een scheutje olie in een ruime pan. Fruit de ui
+                zachtjes en voeg daarna de paprika toe. Bak ongeveer
+                5 minuten tot de groenten zacht beginnen te worden.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+
+            <div>
+              <h3>Kruiden & tomaat</h3>
+              <p>
+                Voeg de tomatenpuree, komijn, paprikapoeder en eventueel
+                oregano toe. Bak dit ongeveer 1 minuut mee. Voeg daarna
+                de tomatenblokjes toe.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+
+            <div>
+              <h3>Bonen & mais erbij</h3>
+              <p>
+                Voeg de kidneybonen en mais toe. Roer alles goed door
+                en voeg ongeveer 100–150 ml water toe.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">5</div>
+
+            <div>
+              <h3>Laat zacht pruttelen</h3>
+              <p>
+                Laat het geheel 15–20 minuten zachtjes koken.
+                De paprika wordt lekker zacht en de saus krijgt
+                een mooie, dikke structuur.
+              </p>
+            </div>
+          </div>
+
+          <!-- KID SECTION -->
+          <div class="little-one">
+
+            <div class="little-one-title">
+              🧒 Eerst een bordje voor de kleine
+            </div>
+
+            <p>
+              Schep een portie van het milde prutje apart. Prak de
+              kidneybonen eventueel een beetje fijn en roer het door
+              zachte rijst. Voeg eventueel een scheutje water toe als
+              het geheel wat smeuïger mag zijn.
+            </p>
+
+          </div>
+
+          <div class="step">
+            <div class="step-number">6</div>
+
+            <div>
+              <h3>Bouw de nachos</h3>
+              <p>
+                Verdeel de tortillachips over een ovenschaal.
+                Schep het bonen-groentemengsel erover en verdeel
+                de geraspte kaas royaal over de bovenkant.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">7</div>
+
+            <div>
+              <h3>Even de oven in</h3>
+              <p>
+                Bak ongeveer 10 minuten op 200 °C, tot de kaas mooi
+                gesmolten en licht goudbruin is.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SERVING -->
+        <div class="card">
+
+          <h2>Op tafel 🌼</h2>
+
+          <p>
+            Zet de nachos direct op tafel en serveer er eventueel
+            crème fraîche, avocado of verse koriander bij.
+          </p>
+
+          <div class="tip">
+            <strong>✨ Voor volwassenen</strong><br>
+            Wil je wat meer pit? Voeg pas ná het bordje voor de kleine
+            chilivlokken, jalapeño of een beetje hete saus toe.
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+    <footer>
+      Met liefde gemaakt voor kleine én grote eters 🌿
+    </footer>
+
+  </main>
+
+</body>
+</html>
