@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zythologische Bockbier Proeverij | Noppa Brand Design</title>
+    <style>
+        :root {
+            --noppa-indigo: #1A1B4B;
+            --noppa-indigo-light: #282A6B;
+            --noppa-coral: #FF5A5F;
+            --noppa-gray: #F4F5F7;
+            --noppa-white: #FFFFFF;
+            --noppa-text: #1E293B;
+            --noppa-muted: #64748B;
+            --gold-accent: #D97706;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--noppa-gray);
+            color: var(--noppa-text);
+            line-height: 1.65;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--noppa-indigo) 0%, var(--noppa-indigo-light) 100%);
+            color: var(--noppa-white);
+            padding: 4rem 1.5rem 3.5rem;
+            text-align: center;
+            border-bottom: 5px solid var(--noppa-coral);
+        }
+
+        header .badge {
+            display: inline-block;
+            background-color: var(--noppa-coral);
+            color: var(--noppa-white);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+
+        header p {
+            max-width: 720px;
+            margin: 0 auto;
+            color: #CBD5E1;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        /* Intro Section over Bockbieren */
+        .intro-card {
+            background-color: var(--noppa-white);
+            border-radius: 16px;
+            padding: 2.25rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 24px rgba(26, 27, 75, 0.06);
+            border-top: 4px solid var(--noppa-indigo);
+        }
+
+        .intro-card h2 {
+            color: var(--noppa-indigo);
+            font-size: 1.55rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .intro-card p {
+            margin-bottom: 1rem;
+            color: var(--noppa-text);
+        }
+
+        .intro-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        .highlight-item {
+            background-color: var(--noppa-gray);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .highlight-item strong {
+            color: var(--noppa-indigo);
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight-item span {
+            font-size: 0.85rem;
+            color: var(--noppa-muted);
+        }
+
+        /* Sommelier Tip Banner */
+        .sommelier-tip {
+            background-color: var(--noppa-indigo);
+            color: var(--noppa-white);
+            border-left: 5px solid var(--noppa-coral);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 6px 18px rgba(26, 27, 75, 0.12);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .sommelier-tip-icon {
+            background-color: rgba(255, 90, 95, 0.2);
+            color: var(--noppa-coral);
+            width: 54px;
+            height: 54px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
+        .sommelier-tip strong {
+            color: #FDE047;
+        }
+
+        /* Timeline / Flow Layout */
+        .tasting-timeline {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .beer-card {
+            background-color: var(--noppa-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(26, 27, 75, 0.07);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .beer-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--noppa-coral);
+            color: var(--noppa-white);
+            font-weight: 800;
+            font-size: 0.9rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 8px;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Brewery Visual Banner */
+        .brewery-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            color: var(--noppa-white);
+            min-height: 220px;
+        }
+
+        .brewery-visual svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 0.75rem;
+        }
+
+        .brewery-visual .brewery-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .brewery-visual .label-art-title {
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        /* Etiket Kleurthema's */
+        .theme-westakkers { background: linear-gradient(135deg, #365314 0%, #CA8A04 100%); }
+        .theme-vandestreek { background: linear-gradient(135deg, #EA580C 0%, #FACC15 100%); color: #1E293B; }
+        .theme-eeuwigejeugd { background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); border-right: 4px solid #FDE047; }
+        .theme-korenaar { background: linear-gradient(135deg, #1C1917 0%, #44403C 100%); border-right: 4px solid #D4AF37; }
+        .theme-barbar { background: linear-gradient(135deg, #27272A 0%, #78350F 100%); border-right: 4px solid #DC2626; }
+        .theme-muifel { background: linear-gradient(135deg, #09090B 0%, #27272A 100%); border-right: 4px solid #F59E0B; }
+
+        .card-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .beer-meta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.85rem;
+        }
+
+        .meta-pill {
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.7rem;
+            border-radius: 6px;
+            background-color: var(--noppa-gray);
+            color: var(--noppa-indigo);
+        }
+
+        .meta-pill.abv {
+            background-color: rgba(255, 90, 95, 0.12);
+            color: var(--noppa-coral);
+        }
+
+        .card-body h2 {
+            font-size: 1.45rem;
+            color: var(--noppa-indigo);
+            margin-bottom: 0.15rem;
+        }
+
+        .card-body .style-sub {
+            font-size: 0.9rem;
+            color: var(--noppa-muted);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--noppa-muted);
+            font-weight: 700;
+            margin-top: 0.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .pairing-box {
+            margin-top: 1.25rem;
+        }
+
+        .pairing-inner {
+            background-color: var(--noppa-gray);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            border-left: 4px solid var(--noppa-indigo);
+        }
+
+        .pairing-inner strong {
+            color: var(--noppa-indigo);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        /* Smaakbrug (Vloeiende overgang tussen bieren) */
+        .taste-bridge {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin: 0.5rem 2rem;
+            padding: 1.1rem 1.5rem;
+            background: linear-gradient(90deg, rgba(26, 27, 75, 0.04) 0%, rgba(255, 90, 95, 0.06) 100%);
+            border-left: 3px dashed var(--noppa-coral);
+            border-radius: 0 12px 12px 0;
+            color: var(--noppa-indigo);
+            font-size: 0.92rem;
+        }
+
+        .bridge-icon {
+            background-color: var(--noppa-coral);
+            color: var(--noppa-white);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .taste-bridge strong {
+            color: var(--noppa-coral);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.8px;
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            color: var(--noppa-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <span class="badge">Zythologisch Proefschema</span>
+    <h1>De Ultieme Bockbier Reis</h1>
+    <p>Zes karaktervolle bockbieren geordend op smaakopbouw, alcoholpercentage (6,5% tot 9,0%) en vloeiende smaakbruggen.</p>
+</header>
+
+<div class="container">
+
+    <!-- INTRODUCTIE OVER BOCKBIER -->
+    <section class="intro-card">
+        <h2>🐐 De ziel van Bockbier: van Einbeck tot moderne Craft</h2>
+        <p>
+            Hoewel bijna iedereen bij bockbier direct aan een bok met horens denkt, ligt de oorsprong in de Noord-Duitse Hanzestad <strong>Einbeck</strong>. In de 14e eeuw brouwde men daar een zwaarder, langer houdbaar bier voor de export. Toen dit bier in München razend populair werd, verbasterde het Beierse dialect de naam <em>"Ainpöckisch Bier"</em> naar <em>"Ein Bockbier"</em> (één bockbier). De geit op het etiket is daar eeuwen later pas als visuele woordspeling bijgekomen.
+        </p>
+        <p>
+            Waar een traditionele Nederlandse herfstbok vooral steunt op gebrande karamelmout, laat deze proeverij zien hoe veelzijdig het genre vandaag de dag is. We reizen van <strong>Berlicumse rogge</strong> en <strong>verse oogsthop</strong> via een <strong>klassieke moutbok</strong> en <strong>Italiaanse rodewijnvaten</strong> naar <strong>Belgische honing</strong> en een <strong>zware dubbelbock</strong>.
+        </p>
+        <div class="intro-highlights">
+            <div class="highlight-item">
+                <strong>🌾 De rol van Mout & Rogge</strong>
+                <span>Gekarameliseerde gerstemout zorgt voor toffee- en notentonen; roggemout voegt een broodachtige body en peperige kruidigheid toe.</span>
+            </div>
+            <div class="highlight-item">
+                <strong>🌡️ Waarom temperatuur telt</strong>
+                <span>Schenk bockbier nooit ijskoud (4 °C). Pas tussen de 8 en 12 °C openen de mout-esters, honing en houttonen zich volledig.</span>
+            </div>
+            <div class="highlight-item">
+                <strong>🥖 Tussendoor neutraliseren</strong>
+                <span>Zet een karaf kraanwater en ongezouten zuurdesembrood op tafel om je gehemelte bij elke smaakbrug even op nul te zetten.</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="sommelier-tip">
+        <div class="sommelier-tip-icon">🍷</div>
+        <div>
+            <strong>Voorbereiding voorafgaand aan het schenken:</strong>
+            Met de bevestigde alcoholpercentages (1x 6,5%, 3x 7,0%, 1x 8,5% en 1x 9,0%) hebben we een prachtige traptrede-opbouw. Haal nummer 4, 5 en 6 een half uur voor de start uit de koelkast zodat ze op keldertemperatuur komen.
+        </div>
+    </div>
+
+    <div class="tasting-timeline">
+
+        <!-- BIER 1: WESTAKKERS BOCK (6,5%) -->
+        <article class="beer-card">
+            <span class="step-badge">#1 De Opener (6,5%)</span>
+            <div class="brewery-visual theme-westakkers">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FDE047" stroke-width="2">
+                    <circle cx="12" cy="7" r="3"/>
+                    <path d="M3 20h18M6 20l3-7 3 7M12 20l3-7 3 7"/>
+                </svg>
+                <span class="brewery-label">Balkums Roggebier</span>
+                <span class="label-art-title">WESTAKKERS BOCK</span>
+            </div>
+            <div class="card-body">
+                <div class="beer-meta">
+                    <span class="meta-pill abv">6,5% ABV</span>
+                    <span class="meta-pill">🌡️ 7 – 8 °C</span>
+                    <span class="meta-pill">🍷 Kelk of Tulpglas</span>
+                </div>
+                <h2>Westakkers Bock</h2>
+                <p class="style-sub">Lokale Roggebock • Berlicum</p>
+                
+                <div class="section-title">Zythologische aftrap</div>
+                <p>Met 6,5% is dit het lichtste bier van de avond en daarmee de perfecte thuiswedstrijd om de smaakpapillen wakker te kussen. De rogge geeft een zacht, broodachtig mondgevoel en een lichte aardse kruidigheid zonder dat zoet of bitter je gehemelte direct belast.</p>
+
+                <div class="pairing-box">
+                    <div class="pairing-inner">
+                        <strong>🧀 Borrelspijs: Roggebrood met Oude Kaas & Appelstroop</strong>
+                        <em>Harmonie:</em> De aardse rogge in het bier vormt een eenheid met ambachtelijk roggebrood, terwijl de rijpingskristallen in de kaas en het frisse zoetje van de stroop het bier optillen.
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- SMAAKBRUG 1 -> 2 -->
+        <div class="taste-bridge">
+            <div class="bridge-icon">↓</div>
+            <div>
+                <strong>Smaakbrug van #1 naar #2 (Van Graan naar Groene Hop)</strong>
+                Nu je mond gewend is aan het zachte, kruidige graankarakter van de rogge, zetten we een stapje omhoog naar 7,0%. De aardse kruidigheid van de Westakkers vloeit prachtig over in de groene, florale kruidigheid van verse oogsthop.
+            </div>
+        </div>
+
+        <!-- BIER 2: VANDESTREEK FRESH HOP BOCK (7,0%) -->
+        <article class="beer-card">
+            <span class="step-badge">#2 Frisse Hop (7,0%)</span>
+            <div class="brewery-visual theme-vandestreek">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2C9 7 7 10 7 14a5 5 0 0 0 10 0c0-4-2-7-5-12z"/>
+                    <path d="M9.5 14.5c1.5 1 3.5 1 5 0"/>
+                </svg>
+                <span class="brewery-label">Vandestreek Bier</span>
+                <span class="label-art-title">FRESH HOP BOCK</span>
+            </div>
+            <div class="card-body">
+                <div class="beer-meta">
+                    <span class="meta-pill abv">7,0% ABV</span>
+                    <span class="meta-pill">🌡️ 7 – 8 °C</span>
+                    <span class="meta-pill">🥃 Tulpglas</span>
+                </div>
+                <h2>Fresh Hop Bock</h2>
+                <p class="style-sub">Gehopte Herfstbok • Utrecht</p>
+                
+                <div class="section-title">De eerste van het 7,0%-trio</div>
+                <p>Gebrouwen met verse hopbellen direct van het veld. Waar de meeste bockbieren leunen op moutzoet, brengt deze Fresh Hop een levendig citrus- en dennenaroma. Door hem als eerste van de drie 7,0%-bieren te schenken, zijn je smaakpapillen nog scherp genoeg om elke subtiele hopolie op te vangen.</p>
+
+                <div class="pairing-box">
+                    <div class="pairing-inner">
+                        <strong>🧀 Borrelspijs: Oesterzwam-bitterbal met Mosterd of Jonge Geitenkaas</strong>
+                        <em>Contrast:</em> Het levendige koolzuur en het groene hopbitter snijden verfrissend door het romige vet van een krokante bitterbal of zachte geitenkaas.
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- SMAAKBRUG 2 -> 3 -->
+        <div class="taste-bridge">
+            <div class="bridge-icon">↓</div>
+            <div>
+                <strong>Smaakbrug van #2 naar #3 (Van Hopbitter naar Karamelmout)</strong>
+                Onder het frisse hopdek van Vandestreek zit al een zachte bockmout-basis. In stap 3 laten we de hop los, blijven we op exact hetzelfde alcoholpercentage (7,0%), maar draaien we de volumeknop van geroosterde karamel en toffee helemaal open.
+            </div>
+        </div>
+
+        <!-- BIER 3: BOKKELUL (7,0%) -->
+        <article class="beer-card">
+            <span class="step-badge">#3 Klassiek Moutig (7,0%)</span>
+            <div class="brewery-visual theme-eeuwigejeugd">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FDE047" stroke-width="2">
+                    <path d="M5 4c2 0 4 2 4 5M19 4c-2 0-4 2-4 5"/>
+                    <polygon points="12 8 8 15 16 15 12 8"/>
+                    <path d="M10 15v5h4v-5"/>
+                </svg>
+                <span class="brewery-label">De Eeuwige Jeugd</span>
+                <span class="label-art-title">BOKKELUL</span>
+            </div>
+            <div class="card-body">
+                <div class="beer-meta">
+                    <span class="meta-pill abv">7,0% ABV</span>
+                    <span class="meta-pill">🌡️ 8 – 9 °C</span>
+                    <span class="meta-pill">🥃 Tulpglas / Bokaal</span>
+                </div>
+                <h2>Bokkelul</h2>
+                <p class="style-sub">Klassieke Herfstbok • Amsterdam</p>
+                
+                <div class="section-title">Het hart van de proeverij</div>
+                <p>Dit is het archetype van de Nederlandse herfstbok: robijnrood, volmoutig en rijk aan aroma's van gebrande suiker, toffee en rozijnen. Na de frisse hop van bier #2 voelt deze Bokkelul als een warme deken in de mond.</p>
+
+                <div class="pairing-box">
+                    <div class="pairing-inner">
+                        <strong>🥩 Borrelspijs: Gehaktballetjes in Ketjapsaus of Gebrande Pecannoten</strong>
+                        <em>Harmonie:</em> De Maillard-reactie (het bruinen van vlees en roosteren van noten) spiegelt één-op-één de gekarameliseerde moutstort van de Bokkelul.
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- SMAAKBRUG 3 -> 4 -->
+        <div class="taste-bridge">
+            <div class="bridge-icon">↓</div>
+            <div>
+                <strong>Smaakbrug van #3 naar #4 (Van Zuivere Mout naar Houtrijping)</strong>
+                We houden het alcoholpercentage nog één keer vast op 7,0%, maar voegen een compleet nieuwe dimensie toe: eikenhouten wijnvaten. Omdat je in #3 een klassieke bock hebt geproefd, herken je in #4 precies wat het Italiaanse Brunello-wijnvat met een bockbier doet.
+            </div>
+        </div>
+
+        <!-- BIER 4: LA BOCK BRUNELLO (7,0%) -->
+        <article class="beer-card">
+            <span class="step-badge">#4 Barrel Aged (7,0%)</span>
+            <div class="brewery-visual theme-korenaar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2">
+                    <path d="M12 20V4M8 8l4-4 4 4M8 13l4-4 4 4"/>
+                    <circle cx="12" cy="18" r="3"/>
+                </svg>
+                <span class="brewery-label">De Dochter van de Korenaar</span>
+                <span class="label-art-title">LA BOCK BRUNELLO</span>
+            </div>
+            <div class="card-body">
+                <div class="beer-meta">
+                    <span class="meta-pill abv">7,0% ABV</span>
+                    <span class="meta-pill">🌡️ 10 – 11 °C</span>
+                    <span class="meta-pill">🍷 Snifter / Wijnglas</span>
+                </div>
+                <h2>La Bock Brunello</h2>
+                <p class="style-sub">Barrel Aged Bockbeer • Baarle-Hertog</p>
+                
+                <div class="section-title">Elegante houtrijping op 7,0%</div>
+                <p>Gerijpt op authentieke Brunello di Montalcino rodewijnvaten. Doordat dit bier een bescheiden 7,0% bevat, overheerst de alcohol niet en komen de verfijnde wijnzuren, kersen, vanille en zachte houttannines kristalhelder naar voren. Zou je deze pas ná de zoete 8,5% en zware 9,0% drinken, dan zouden deze subtiele wijntonen ondersneeuwen.</p>
+
+                <div class="pairing-box">
+                    <div class="pairing-inner">
+                        <strong>🧀 Borrelspijs: Parmigiano Reggiano (24+ mnd) & Bresaola</strong>
+                        <em>Harmonie:</em> Een puur Italiaans onderonsje. De vinueze rode-fruittonen en lichte tannines van het Brunello-vat sluiten naadloos aan op het diepe umami van oude Parmezaan.
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- SMAAKBRUG 4 -> 5 -->
+        <div class="taste-bridge">
+            <div class="bridge-icon">↓</div>
+            <div>
+                <strong>Smaakbrug van #4 naar #5 (Van Droge Tannines naar Fluweelzachte Honing)</strong>
+                Het Brunello-vat laat een elegante, licht drogende wijn-afdronk achter in de mond. Dat vraagt om een weelderige tegenhanger: we maken de sprong naar 8,5% alcohol en laten de droge houttonen verzachten door rijke Belgische honing.
+            </div>
+        </div>
+
+        <!-- BIER 5: BARBAR BOK (8,5%) -->
+        <article class="beer-card">
+            <span class="step-badge">#5 Rijke Honing (8,5%)</span>
+            <div class="brewery-visual theme-barbar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                    <polygon points="12 2 19 6 19 14 12 18 5 14 5 6 12 2"/>
+                    <path d="M12 6v8M8 10h8"/>
+                </svg>
+                <span class="brewery-label">Brasserie Lefebvre</span>
+                <span class="label-art-title">BARBÃR BOK</span>
+            </div>
+            <div class="card-body">
+                <div class="beer-meta">
+                    <span class="meta-pill abv">8,5% ABV</span>
+                    <span class="meta-pill">🌡️ 9 – 10 °C</span>
+                    <span class="meta-pill">🍺 Bokaal of Barbãr-pul</span>
+                </div>
+                <h2>Barbãr Bok</h2>
+                <p class="style-sub">Belgische Honingbok • Quenast (BE)</p>
+                
+                <div class="section-title">Verwarmend & Volmondig</div>
+                <p>Met 8,5% en echte Belgische honing gaan we naar het zware segment. Het bier heeft een bloemige neus, kruidige gist-esters en een ronde, filmende zoetheid die het gehemelte volledig omarmt na de drogere La Bock Brunello.</p>
+
+                <div class="pairing-box">
+                    <div class="pairing-inner">
+                        <strong>🧀 Borrelspijs: Blauwaderkaas (Roquefort/Gorgonzola) of Dadels met Spek</strong>
+                        <em>Contrast:</em> Het natuurlijke honingzoet en de 8,5% alcohol vormen een klassiek droomkoppel met het pittige, zoute karakter van blauwschimmelkaas.
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- SMAAKBRUG 5 -> 6 -->
+        <div class="taste-bridge">
+            <div class="bridge-icon">↓</div>
+            <div>
+                <strong>Smaakbrug van #5 naar #6 (De Cirkel Rond: Van Honingzoet terug naar Krachtige Rogge)</strong>
+                We begonnen de avond met een subtiele Brabantse roggebock van 6,5% en we eindigen de reis met zijn grote, zware broer uit Oss van maar liefst 9,0%. De kruidige, peperige roggemout van deze Dubbelbock snijdt dwars door het honingzoet van de Barbãr heen voor een onvergetelijke finale.
+            </div>
+        </div>
+
+        <!-- BIER 6: MUIFEL I SPY DOUBLE RYE (9,0%) -->
+        <article class="beer-card">
+            <span class="step-badge">#6 Grand Finale (9,0%)</span>
+            <div class="brewery-visual theme-muifel">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FDE047" stroke-width="2">
+                    <path d="M3 11h18M6 11l2-6h8l2 6"/>
+                    <path d="M8 15l4 5 4-5"/>
+                </svg>
+                <span class="brewery-label">Muifel Brouwerij</span>
+                <span class="label-art-title">I SPY DOUBLE RYE</span>
+            </div>
+            <div class="card-body">
+                <div class="beer-meta">
+                    <span class="meta-pill abv">9,0% ABV</span>
+                    <span class="meta-pill">🌡️ 10 – 12 °C</span>
+                    <span class="meta-pill">🍷 Bokaal / Snifter</span>
+                </div>
+                <h2>I Spy Double Rye</h2>
+                <p class="style-sub">Rogge Dubbelbock • Oss</p>
+                
+                <div class="section-title">De Krachtpatser als Sluitstuk</div>
+                <p>Met 9,0% alcohol is deze veelvuldig bekroonde Rogge Dubbelbock de onbetwiste afsluiter. Hij heeft een dikke, bijna romige body door het hoge aandeel roggemout, gevolgd door donker fruit, karamel en een krachtige, peperige afdronk die nog minutenlang nagloeit.</p>
+
+                <div class="pairing-box">
+                    <div class="pairing-inner">
+                        <strong>🐗 Borrelspijs: Droge Wildzwijnworst of Pure Chocolade (75% cacao)</strong>
+                        <em>Intensiteit & Harmonie:</em> Een dubbelbock van 9,0% vraagt om krachtige smaken. De peperige rogge en geroosterde mout smelten samen met bittere pure chocolade of kruidige wildworst.
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</div>
+
+<footer>
+    Samengesteld door jouw AI Bier Sommelier • Opgemaakt in Noppa Brand Design
+</footer>
+
+</body>
+</html>
