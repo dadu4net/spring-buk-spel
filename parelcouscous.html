@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boodschappenlijstje - Parelcouscous & Ovenschotel</title>
+    <title>Recepten & Boodschappen</title>
     <style>
         :root {
             --primary: #5c6bc0;
@@ -34,15 +34,21 @@
         h2 {
             border-bottom: 2px solid var(--primary);
             padding-bottom: 5px;
-            margin-top: 20px;
+            margin-top: 25px;
             color: var(--primary);
             font-size: 1.2rem;
         }
-        ul {
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .checklist {
             list-style-type: none;
             padding-left: 0;
         }
-        li {
+        .checklist li {
             margin-bottom: 12px;
             display: flex;
             align-items: center;
@@ -52,7 +58,7 @@
             transform: scale(1.2);
             cursor: pointer;
         }
-        label {
+        .checklist label {
             cursor: pointer;
         }
         input[type="checkbox"]:checked + label {
@@ -63,10 +69,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Boodschappenlijstje 🛒</h1>
+        <h1>Boodschappen & Recepten 🛒</h1>
         
-        <h2>Ingrediënten</h2>
-        <ul>
+        <h2>Boodschappenlijstje</h2>
+        <ul class="checklist">
             <li>
                 <input type="checkbox" id="item1">
                 <label for="item1">Rijst</label>
@@ -77,7 +83,7 @@
             </li>
             <li>
                 <input type="checkbox" id="item3">
-                <label for="item3">Courgette</label>
+                <label for="item3">Courgette (2 stuks)</label>
             </li>
             <li>
                 <input type="checkbox" id="item4">
@@ -95,7 +101,59 @@
                 <input type="checkbox" id="item7">
                 <label for="item7">Olie</label>
             </li>
+            <li>
+                <input type="checkbox" id="item8">
+                <label for="item8">Parelcouscous (200 g)</label>
+            </li>
+            <li>
+                <input type="checkbox" id="item9">
+                <label for="item9">Pompoen in blokjes (400 g)</label>
+            </li>
+            <li>
+                <input type="checkbox" id="item10">
+                <label for="item10">Burrata (2 bollen)</label>
+            </li>
+            <li>
+                <input type="checkbox" id="item11">
+                <label for="item11">Rode ui & Knoflook</label>
+            </li>
+            <li>
+                <input type="checkbox" id="item12">
+                <label for="item12">Citroen & Pijnboompitten</label>
+            </li>
+            <li>
+                <input type="checkbox" id="item13">
+                <label for="item13">Groentebouillon</label>
+            </li>
         </ul>
+
+        <h2>Recept 1: Gezonde Rijstovenschotel</h2>
+        <ul>
+            <li><strong>Ingrediënten:</strong> Rijst, kipfilet of zalm, courgette, doperwten, milde kaas, paprikapoeder, zout, olie.</li>
+        </ul>
+        <ol>
+            <li>Kook eerst de rijst volgens de aanwijzingen op de verpakking.</li>
+            <li>Snijd de gekozen eiwitbron (kipfilet of zalm) in blokjes en bak in een pan met wat milde kruiden zoals paprikapoeder en een beetje zout, tot ze gaar zijn.</li>
+            <li>Voeg zachte groenten toe, zoals in stukjes gesneden courgette en doperwten, en bak deze kort mee.</li>
+            <li>Meng de rijst, de gebakken kip of zalm en groenten door elkaar in een ovenschaal en strooi er eventueel wat geraspte milde kaas over voor de smaak.</li>
+            <li>Bak de schotel tien minuten in de oven op 200 graden om alles te verwarmen en de kaas te laten smelten.</li>
+        </ol>
+
+        <h2>Recept 2: Parelcouscous met Geroosterde Pompoen, Courgette & Burrata 🧡</h2>
+        <ul>
+            <li><strong>Ingrediënten:</strong> 200 g parelcouscous, 400 g pompoen, 1 courgette, 2 bollen burrata, 1 rode ui, 2 teentjes knoflook, 2 el olijfolie, 1 tl paprikapoeder, ½ citroen, peper en zout, handje pijnboompitten, optioneel balsamico crème.</li>
+        </ul>
+        <ol>
+            <li>Verwarm de oven voor op 200°C (hetelucht 180°C).</li>
+            <li>Snijd de pompoen in blokjes, de courgette in kleine blokjes en de rode ui in partjes.</li>
+            <li>Meng de groenten met olijfolie, geperste knoflook, paprikapoeder, peper en zout.</li>
+            <li>Verdeel over een bakplaat en rooster 25-30 minuten in de oven. Schep halverwege om.</li>
+            <li>Kook ondertussen de parelcouscous volgens de verpakking in groentebouillon. Giet af.</li>
+            <li>Rooster de pijnboompitten in een droge koekenpan goudbruin.</li>
+            <li>Meng de parelcouscous met de geroosterde groenten, wat citroensap en eventueel citroenrasp.</li>
+            <li>Verdeel over de borden en leg de burrata erop. Trek deze voorzichtig open.</li>
+            <li>Garneer met de geroosterde pijnboompitten. Eventueel nog wat balsamico crème erover.</li>
+        </ol>
     </div>
 </body>
 </html>
